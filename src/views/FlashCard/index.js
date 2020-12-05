@@ -2,6 +2,8 @@ import React from 'react';
 import QuestionData from '../../helpers/data/questionData';
 import AnswerCard from '../../components/Cards/AnswerCard';
 import QuestionCard from '../../components/Cards/QuestionCard';
+import AppModal from '../../components/AppModal';
+import AddCardForm from '../../components/Forms/AddCardForm';
 
 export default class FlashCard extends React.Component {
   state = {
@@ -44,9 +46,14 @@ export default class FlashCard extends React.Component {
     const showQuestion = () => <QuestionCard key={currentCard.firebaseKey} card={currentCard} showAnswer={this.showAnswerToQuestion} />;
     const showAnswer = () => <AnswerCard key={currentCard.firebaseKey} card={currentCard} showNextQuestion={this.loadData} />;
     return (
+        <>
+        <AppModal title={'Add Flashcard'} buttonLabel={'Add Flashcard'}>
+          <AddCardForm onUpdate={this.loadData}/>
+        </AppModal>
         <div className="flash-card d-flex flex-wrap justify-content-center">
           { answer ? showAnswer() : showQuestion() }
         </div>
+        </>
     );
   }
 }

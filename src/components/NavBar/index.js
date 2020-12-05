@@ -18,7 +18,7 @@ export default function NavBar() {
               <Link className='nav-dash-bar' to='/flash-card'>Flash Cards</Link>
             </NavItem>
           </Nav>
-          </Navbar>
+      </Navbar>
     </StrictMode>
   );
 }
